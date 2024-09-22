@@ -1,6 +1,5 @@
 import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
-import { Page } from '@playwright/test'; // Playwright's Page type for typing
 
 export class BaseTest {
   // Reusable login function
@@ -14,5 +13,16 @@ export class BaseTest {
     for (const item of items) {
       await productPage.addItemToCart(item);
     }
+  }
+
+  // Reusable function to verify if cart badge count matches the expected value
+  async verifyCartBadge(productPage: ProductPage, expectedCount: number) {
+    const cartBadgeCount = await productPage.getCartBadgeCount();
+    if (cartBadgeCount !== expectedCount) {
+      throw new Error(
+        `Expected ${expectedCount} items in the cart but found ${cartBadgeCount}.`
+      );
+    }
+    return true;
   }
 }

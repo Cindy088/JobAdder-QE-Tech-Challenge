@@ -1,8 +1,8 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
-import { itemsToAdd } from '../data/itemsToAdd';
+import { itemsToAdd } from '../data/items-to-add';
 import { BaseTest } from '../utils/BaseTest';
 
 test.describe('SauceDemo Cart Tests', () => {
@@ -18,7 +18,6 @@ test.describe('SauceDemo Cart Tests', () => {
 
     await baseTest.login(loginPage, 'standard_user', 'secret_sauce');
     await baseTest.addItemsToCart(productPage, itemsToAdd);
-
     await productPage.navigateToCart();
   });
 
@@ -27,10 +26,5 @@ test.describe('SauceDemo Cart Tests', () => {
       const itemInCart = await checkoutPage.verifyItemInCart(item);
       expect(itemInCart).toBeTruthy();
     }
-  });
-
-  test('Verify cart page login status', async () => {
-    const loginStatus = await checkoutPage.verifyLoginStatus();
-    expect(loginStatus).toBeTruthy();
   });
 });

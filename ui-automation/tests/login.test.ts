@@ -12,32 +12,36 @@ test.describe.parallel('SauceDemo Login Tests', () => {
   });
 
   test('Login with invalid username', async () => {
-    await loginPage.login('invalid_user', 'secret_sauce').catch((error) => {
-      const errorMsg = loginPage.verifyErrorMessage();
+    try {
+      await loginPage.login('invalid_user', 'secret_sauce');
+    } catch (error) {
+      const errorMsg = await loginPage.verifyErrorMessage();
       expect(errorMsg).toContain(
         'Epic sadface: Username and password do not match'
       );
-    });
+    }
   });
 
   test('Login with invalid password', async () => {
-    await loginPage
-      .login('standard_user', 'invalid_password')
-      .catch((error) => {
-        const errorMsg = loginPage.verifyErrorMessage();
-        expect(errorMsg).toContain(
-          'Epic sadface: Username and password do not match'
-        );
-      });
-  });
-
-  test('Login with both invalid credentials', async () => {
-    await loginPage.login('invalid_user', 'invalid_password').catch((error) => {
-      const errorMsg = loginPage.verifyErrorMessage();
+    try {
+      await loginPage.login('standard_user', 'invalid_password');
+    } catch (error) {
+      const errorMsg = await loginPage.verifyErrorMessage();
       expect(errorMsg).toContain(
         'Epic sadface: Username and password do not match'
       );
-    });
+    }
+  });
+
+  test('Login with both invalid credentials', async () => {
+    try {
+      await loginPage.login('invalid_user', 'invalid_password');
+    } catch (error) {
+      const errorMsg = await loginPage.verifyErrorMessage();
+      expect(errorMsg).toContain(
+        'Epic sadface: Username and password do not match'
+      );
+    }
   });
 
   test('Login with valid credentials', async () => {

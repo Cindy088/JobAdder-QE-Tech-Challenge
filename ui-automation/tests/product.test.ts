@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
-import { itemsToAdd } from '../data/itemsToAdd';
+import { itemsToAdd } from '../data/items-to-add';
 import { BaseTest } from '../utils/BaseTest';
 
 test.describe('SauceDemo Inventory Tests', () => {
@@ -12,7 +12,6 @@ test.describe('SauceDemo Inventory Tests', () => {
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     productPage = new ProductPage(page);
-
     await baseTest.login(loginPage, 'standard_user', 'secret_sauce');
   });
 
@@ -23,11 +22,23 @@ test.describe('SauceDemo Inventory Tests', () => {
     }
   });
 
-  test('Add items to the cart', async ({ page }) => {
-    await baseTest.addItemsToCart(productPage, itemsToAdd);
-    await productPage.navigateToCart();
+  test('Verify cart badge shows zero when no items are added', async () => {
+    const cartBadgeCount = await productPage.getCartBadgeCount();
+    expect(cartBadgeCount).toBe(0); // Expect zero items in the cart
+  });
 
-    const currentURL = page.url();
-    expect(currentURL).toBe('https://www.saucedemo.com/cart.html');
+  test('Add items to the cart and verify cart badge dynamically', async ({
+    page,
+  }) => {
+    await baseTest.addItemsToCart(productPage, itemsToAdd);
+    const cartBadgeCount = await productPage.getCartBadgeCount();
+    expect(cartBadgeCount).toBe(itemsToAdd.length); // Ensure the cart badge reflects the correct number of items
+  });
+
+  test('Remove items from the cart and verify the cart badge', async () => {
+    await baseTest.addItemsToCart(productPage, itemsToAdd);
+    await productPage.removeItemFromCart(itemsToAdd[0]);
+    const cartBadgeCount = await productPage.getCartBadgeCount();
+    expect(cartBadgeCount).toBe(itemsToAdd.length - 1); // One less item in the cart
   });
 });

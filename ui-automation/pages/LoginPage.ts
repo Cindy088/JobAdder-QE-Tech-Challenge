@@ -12,13 +12,24 @@ export class LoginPage {
     await this.page.locator('[data-test="password"]').fill(password);
     await this.page.locator('[data-test="login-button"]').click();
 
-    if (await this.page.locator('[data-test="error"]').isVisible()) {
-      throw new Error('Login failed: Invalid credentials.');
-    } else {
-      await this.page.waitForURL('https://www.saucedemo.com/inventory.html', {
-        timeout: 3000,
-      });
+    // Wait for either the error message or the inventory page
+    const errorVisible = await this.page
+      .locator('[data-test="error"]')
+      .isVisible({ timeout: 5000 })
+      .catch(() => false); // Prevent breaking if error is not present
+
+    // If error is visible, throw an error for invalid credentials
+    if (errorVisible) {
+      const errorMsg = await this.page
+        .locator('[data-test="error"]')
+        .textContent();
+      throw new Error(`Login failed: ${errorMsg?.trim()}`);
     }
+
+    // Wait for the inventory page to confirm login success
+    await this.page.waitForURL('https://www.saucedemo.com/inventory.html', {
+      timeout: 5000,
+    });
   }
 
   async verifyErrorMessage() {
