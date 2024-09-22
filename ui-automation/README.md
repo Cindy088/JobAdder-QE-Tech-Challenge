@@ -18,24 +18,6 @@ This project demonstrates a UI Automation test using Playwright to automate the 
 - **Language**: TypeScript
 - **Testing Utilities**: Playwright’s built-in assertions and test runner
 
-## Project Structure
-
-.
-├── pages/
-│ ├── LoginPage.ts # Handles all login-related actions
-│ ├── ProductPage.ts # Handles product page-related actions (adding items to cart, etc.)
-│ └── CheckoutPage.ts # Handles checkout and cart verification
-├── tests/
-│ ├── login.test.ts # Tests related to login functionality
-│ ├── checkout.test.ts # Tests related to cart functionality
-│ ├── product.test.ts # Tests related to inventory page
-├── data/
-│ └── items-to-add.ts # A list of items that can be dynamically added to the cart
-├── utils/
-│ └── BaseTest.ts # Contains reusable test helper functions (e.g., login, addItemsToCart)
-├── README.md # This README file
-└── playwright.config.ts # Playwright configuration file
-
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:

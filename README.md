@@ -2,16 +2,6 @@
 
 This repository contains solutions for the JobAdder QE Tech Challenge. The solutions cover UI Automation, API Automation, SQL Query, and a Recursion Bonus Problem. The challenge is organized into the following structure:
 
-## Folder & File Structure
-
-.
-├── ui-automation/ # Folder containing the UI Automation solution with Playwright
-├── API Automation Test.docx # Word document with the API Automation solution
-├── Bonus Points.docx # Word document with the recursion problem solution
-├── SQL Query Test.docx # Word document with the SQL Query solution
-├── .gitignore # Standard Git ignore file
-├── README.md # This README file
-
 ## UI Automation Test
 
 ### Objective:
