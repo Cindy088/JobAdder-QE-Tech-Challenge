@@ -35,17 +35,16 @@ This repository contains solutions for the JobAdder QE Tech Challenge. The solut
 git clone https://github.com/your-username/JobAdder-QE-Tech-Challenge.git
 ```
 
-- Navigate to the ui-automation/ folder and install dependencies:
+- Navigate to the ui-automation/ folder:
 
 ```bash
 cd ui-automation
-npm install
 ```
 
-- Install Playwright browsers:
+- Install Playwright:
 
 ```bash
-npx playwright install
+npm init playwright@latest
 ```
 
 - Run the tests:
