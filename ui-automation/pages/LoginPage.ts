@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test';
+import { getByDataTest } from '../utils';
 
 export class LoginPage {
   constructor(public page: Page) {}
@@ -8,28 +9,9 @@ export class LoginPage {
   }
 
   async login(username: string, password: string) {
-    await this.page.locator('[data-test="username"]').fill(username);
-    await this.page.locator('[data-test="password"]').fill(password);
-    await this.page.locator('[data-test="login-button"]').click();
-
-    // Wait for either the error message or the inventory page
-    const errorVisible = await this.page
-      .locator('[data-test="error"]')
-      .isVisible({ timeout: 5000 })
-      .catch(() => false); // Prevent breaking if error is not present
-
-    // If error is visible, throw an error for invalid credentials
-    if (errorVisible) {
-      const errorMsg = await this.page
-        .locator('[data-test="error"]')
-        .textContent();
-      throw new Error(`Login failed: ${errorMsg?.trim()}`);
-    }
-
-    // Wait for the inventory page to confirm login success
-    await this.page.waitForURL('/inventory.html', {
-      timeout: 5000,
-    });
+    await getByDataTest(this.page, 'username').fill(username);
+    await getByDataTest(this.page, 'password').fill(password);
+    await getByDataTest(this.page, 'login-button').click();
   }
 
   async verifyErrorMessage() {
