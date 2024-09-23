@@ -29,14 +29,14 @@ export class ProductPage {
       .isVisible();
 
     if (!cartBadgeExists) {
-      return 0; // No items in cart
+      return 0;
     }
 
     const cartBadge = await this.page
       .locator('[data-test="shopping-cart-badge"]')
       .textContent();
 
-    return parseInt(cartBadge || '0', 10); // Returns the cart badge count
+    return parseInt(cartBadge || '0', 10);
   }
 
   // Removes an item from the cart

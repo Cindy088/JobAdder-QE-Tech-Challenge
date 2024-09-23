@@ -21,10 +21,11 @@ test.describe('SauceDemo Cart Tests', () => {
     await productPage.navigateToCart();
   });
 
-  test('Verify items in the cart', async () => {
-    for (const item of itemsToAdd) {
-      const itemInCart = await checkoutPage.verifyItemInCart(item);
-      expect(itemInCart).toBeTruthy();
-    }
+  test('Verify items in the cart', async ({ page }) => {
+    const asserts = itemsToAdd.map((item) => {
+      return expect(page.locator(`[data-test="remove-${item}"]`)).toBeVisible();
+    });
+
+    await Promise.all(asserts);
   });
 });

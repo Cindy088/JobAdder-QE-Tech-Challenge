@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "test"
+    "test": "jest"
   },
   "keywords": [
     "bonuse",
     "test"
   ],
   "author": "Cindy Zhang",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
 }

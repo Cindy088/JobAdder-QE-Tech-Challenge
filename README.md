@@ -71,9 +71,9 @@ npx playwright show-report
 
 ### Instructions:
 
-- The solution is provided in the API Automation Test.docx file.
-- It includes steps to automate API testing using tools like Postman, Playwright, or HTTP clients.
-- cURL commands and screenshots are included.
+- The solution is provided in the script.js and README.md with detail steps.
+- It includes steps to automate API testing using Postman.
+- cURL commands and screenshots are included in the API Automation Test.docx file.
 
 ## SQL Query Test
 
@@ -84,7 +84,7 @@ npx playwright show-report
 
 ### Instructions:
 
-- The solution for the SQL queries is included in the SQL Query Test.docx file.
+- The solution for the SQL queries is included in the SQL Query select.sql file.
 
 ## Bonus Points - Recursion Problem
 
@@ -95,8 +95,4 @@ npx playwright show-report
   - Input: 12345 → Output: 15
   - Input: 45632 → Output: 20
 - Solution:
-  - The solution is provided in the Bonus Points.docx file.
-
-## License
-
-This project is licensed under the MIT License.
+  - The solution is provided in the index.js file.

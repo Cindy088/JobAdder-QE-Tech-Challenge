@@ -31,14 +31,18 @@ test.describe('SauceDemo Inventory Tests', () => {
     page,
   }) => {
     await baseTest.addItemsToCart(productPage, itemsToAdd);
+
     const cartBadgeCount = await productPage.getCartBadgeCount();
-    expect(cartBadgeCount).toBe(itemsToAdd.length); // Ensure the cart badge reflects the correct number of items
+
+    expect(cartBadgeCount).toBe(itemsToAdd.length);
   });
 
   test('Remove items from the cart and verify the cart badge', async () => {
     await baseTest.addItemsToCart(productPage, itemsToAdd);
     await productPage.removeItemFromCart(itemsToAdd[0]);
+
     const cartBadgeCount = await productPage.getCartBadgeCount();
-    expect(cartBadgeCount).toBe(itemsToAdd.length - 1); // One less item in the cart
+
+    expect(cartBadgeCount).toBe(itemsToAdd.length - 1);
   });
 });

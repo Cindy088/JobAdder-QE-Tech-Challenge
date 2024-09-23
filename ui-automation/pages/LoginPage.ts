@@ -27,7 +27,7 @@ export class LoginPage {
     }
 
     // Wait for the inventory page to confirm login success
-    await this.page.waitForURL('https://www.saucedemo.com/inventory.html', {
+    await this.page.waitForURL('/inventory.html', {
       timeout: 5000,
     });
   }

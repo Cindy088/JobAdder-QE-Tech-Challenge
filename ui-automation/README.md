@@ -93,20 +93,8 @@ export const itemsToAdd = [
 'test.allthethings()-t-shirt-(red)',
 ];
 
-## SOLID Principles Applied
-
-- S: Single Responsibility Principle is followed by dividing responsibilities across different classes (LoginPage, ProductPage, etc.).
-- O: Open/Closed Principle allows us to easily extend test cases by adding new test data without modifying existing code.
-- L: Liskov Substitution Principle is adhered to by ensuring that all functions can operate with derived classes or mocks in future extensions.
-- I: Interface Segregation Principle is maintained with small, purposeful classes.
-- D: Dependency Inversion Principle is followed by separating data (like itemsToAdd.ts) and logic into reusable components.
-
 ## Improvements
 
 - **Cross-browser Support**: Tests can be extended to run across browsers like Firefox, Webkit, and Edge by modifying the playwright.config.ts.
 - **Parallel Execution**: The tests are configured to run in parallel using Playwright’s built-in test runner.
 - **Scalability**: The test framework supports adding more pages, test cases, and configurations easily, following best practices.
-
-## License
-
-This project is licensed under the MIT License.
