@@ -3,6 +3,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
 import { itemsToAdd } from '../data/items-to-add';
 import { BaseTest } from '../utils/BaseTest';
+import { username, password } from '../constants/index';
 
 test.describe('SauceDemo Inventory Tests', () => {
   let loginPage: LoginPage;
@@ -12,7 +13,7 @@ test.describe('SauceDemo Inventory Tests', () => {
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     productPage = new ProductPage(page);
-    await baseTest.login(loginPage, 'standard_user', 'secret_sauce');
+    await baseTest.login(loginPage, username, password);
   });
 
   test('Verify all items are visible in inventory', async () => {

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { BaseTest } from '../utils/BaseTest';
+import { username, password } from '../constants/index';
 
 test.describe.parallel('SauceDemo Login Tests', () => {
   let loginPage: LoginPage;
@@ -13,7 +14,7 @@ test.describe.parallel('SauceDemo Login Tests', () => {
 
   test('Login with invalid username', async () => {
     try {
-      await loginPage.login('invalid_user', 'secret_sauce');
+      await loginPage.login('invalid_user', password);
     } catch (error) {
       const errorMsg = await loginPage.verifyErrorMessage();
       expect(errorMsg).toContain(
@@ -24,7 +25,7 @@ test.describe.parallel('SauceDemo Login Tests', () => {
 
   test('Login with invalid password', async () => {
     try {
-      await loginPage.login('standard_user', 'invalid_password');
+      await loginPage.login(username, 'invalid_password');
     } catch (error) {
       const errorMsg = await loginPage.verifyErrorMessage();
       expect(errorMsg).toContain(
@@ -45,8 +46,8 @@ test.describe.parallel('SauceDemo Login Tests', () => {
   });
 
   test('Login with valid credentials', async () => {
-    await baseTest.login(loginPage, 'standard_user', 'secret_sauce');
-    const currentURL = await loginPage.getCurrentURL();
-    expect(currentURL).toBe('https://www.saucedemo.com/inventory.html');
+    await baseTest.login(loginPage, username, password);
+    const currentURL = new URL(await loginPage.getCurrentURL()).pathname;
+    expect(currentURL).toBe('/inventory.html');
   });
 });

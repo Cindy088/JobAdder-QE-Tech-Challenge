@@ -4,6 +4,7 @@ import { ProductPage } from '../pages/ProductPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { itemsToAdd } from '../data/items-to-add';
 import { BaseTest } from '../utils/BaseTest';
+import { username, password } from '../constants/index';
 
 test.describe('SauceDemo Cart Tests', () => {
   let loginPage: LoginPage;
@@ -16,7 +17,7 @@ test.describe('SauceDemo Cart Tests', () => {
     productPage = new ProductPage(page);
     checkoutPage = new CheckoutPage(page);
 
-    await baseTest.login(loginPage, 'standard_user', 'secret_sauce');
+    await baseTest.login(loginPage, username, password);
     await baseTest.addItemsToCart(productPage, itemsToAdd);
     await productPage.navigateToCart();
   });
