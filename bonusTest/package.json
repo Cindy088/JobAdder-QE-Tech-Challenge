@@ -1,0 +1,16 @@
+{
+  "name": "bonustest",
+  "version": "1.0.0",
+  "description": "Bonuse test for recursion",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "keywords": [
+    "bonuse",
+    "test"
+  ],
+  "author": "Cindy Zhang",
+  "license": "MIT"
+}
