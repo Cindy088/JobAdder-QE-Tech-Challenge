@@ -31,6 +31,9 @@ Before you begin, ensure you have met the following requirements:
 
 ```bash
 git clone https://github.com/your-username/JobAdder-QE-Tech-Challenge.git
+```
+
+```bash
 cd JobAdder-QE-Tech-Challenge/ui-automation
 ```
 

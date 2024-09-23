@@ -93,3 +93,13 @@
 - For each request, click on the Code button (</>) next to the request URL.
 - Select cURL from the dropdown.
 - Copy the generated cURL command to use in the terminal or other tools.
+- Examples:
+
+```bash
+
+curl --location --globoff 'https://api.weatherbit.io/v2.0/current?lat={{lat}}&lon={{lon}}&key=f2173cac655240cb899bc1407203f554'
+```
+
+```bash
+curl --location --globoff 'https://api.weatherbit.io/v2.0/current?postal_code={{postal_code}}&country=US&key=f2173cac655240cb899bc1407203f554'
+```
